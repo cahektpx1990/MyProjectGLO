@@ -30,24 +30,18 @@ console.log("Процент отката посреднику за работу"
 // lesson03
 
 title = prompt("Как называется ваш проект?");
-console.log(title);
 screens = prompt("Какие типы экранов нужно разработать?");
-console.log(screens);
 screenPrice = +prompt("Сколько будет стоить данная работа?");
-console.log(screenPrice);
 adaptive = !!prompt("Нужен ли адаптив на сайте?");
-console.log(adaptive);
+
 
 // Спрашиваем у пользователя про доп услуги
 
 let service1 = prompt("Какой дополнительный тип услуги нужен?");
-console.log(service1);
 let servicePrice1 = +prompt("Сколько это будет стоить?");
-console.log(servicePrice1);
 let service2 = prompt("Какой дополнительный тип услуги нужен?");
-console.log(service2);
 let servicePrice2 = +prompt("Сколько это будет стоить?");
-console.log(servicePrice2);
+
 
 // Вычисляем итоговую стоимость работы
 
