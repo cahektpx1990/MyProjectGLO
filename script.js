@@ -57,9 +57,9 @@ console.log(servicePercentPrice);
 // конструкция условий 
 
 if (fullPrice >= 30000) {
-  alert("Даем скидку в 10%");
+  console.log("Даем скидку в 10%");;
 } else if (fullPrice >= 15000 && fullPrice < 30000) {
-  alert("Даем скидку в 5%");
+  console.log("Даем скидку в 5%");;
 } else if (fullPrice >= 0 && fullPrice < 15000) {
   console.log("Скидка не предусмотрена");
 } else if (fullPrice < 0) {
