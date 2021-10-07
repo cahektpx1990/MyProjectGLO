@@ -22,9 +22,15 @@ const asking = function() {
 
   
   do {
-    screenPrice = prompt("Сколько будет стоить данная работа?");    
-  } while (!isNumber(screenPrice)) ;
+    screenPrice = prompt("Сколько будет стоить данная работа?"); 
+    while (screenPrice === null) {
+      screenPrice = prompt("Сколько будет стоить данная работа?");
+    }
+    screenPrice = +screenPrice;
+    
+  } while (!isNumber(screenPrice));
 
+  // !isNumber(screenPrice) &&
   adaptive = confirm("Нужен ли адаптив на сайте?");
 };
 
@@ -43,8 +49,12 @@ const getAllServicePrices = function() {
       let dopNum = 0;
       do {
         dopNum = prompt("Сколько это будет стоить?");
+        while (dopNum === null) {
+          dopNum = prompt("Сколько будет стоить данная работа?");
+        }
+        dopNum = +dopNum;
       } while (!isNumber(dopNum));
-      return +dopNum;
+      return dopNum;
     };
 
     sum += getDopSum();
