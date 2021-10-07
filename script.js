@@ -1,19 +1,56 @@
 "use strict";
 
-let title = prompt("Как называется ваш проект?");
-let screens = prompt("Какие типы экранов нужно разработать?");
-let screenPrice = +prompt("Сколько будет стоить данная работа?");
-let adaptive = confirm("Нужен ли адаптив на сайте?");
-let service1 = prompt("Какой дополнительный тип услуги нужен?");
-let servicePrice1 = +prompt("Сколько это будет стоить?");
-let service2 = prompt("Какой дополнительный тип услуги нужен?");
-let servicePrice2 = +prompt("Сколько это будет стоить?");
+let title; 
+let screens; 
+let screenPrice;
+let adaptive;
+
 let rollback = 50;
-let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * (rollback / 100)));
+let fullPrice;
+let servicePercentPrice;
+let allServicePrices;
+let service1;
+let service2;
+
+const isNumber = function(num) {  
+  return !isNaN(parseFloat(num)) && isFinite(num);
+};
+
+const asking = function() {
+  title = prompt("Как называется ваш проект?");
+  screens = prompt("Какие типы экранов нужно разработать?");
+
+  
+  do {
+    screenPrice = prompt("Сколько будет стоить данная работа?");    
+  } while (!isNumber(screenPrice)) ;
+
+  adaptive = confirm("Нужен ли адаптив на сайте?");
+};
 
 const getAllServicePrices = function() {
-  return servicePrice1 + servicePrice2;
+  let sum = 0;
+
+  for (let i = 0; i < 2; i++) {
+
+    if (i === 0) {
+      service1 = prompt("Какой дополнительный тип услуги нужен?");
+    } else if (i === 1) {
+      service2 = prompt("Какой дополнительный тип услуги нужен?");
+    }    
+    
+    const getDopSum = function () {
+      let dopNum = 0;
+      do {
+        dopNum = prompt("Сколько это будет стоить?");
+      } while (!isNumber(dopNum));
+      return +dopNum;
+    };
+
+    sum += getDopSum();
+  }
+
+  return sum;  
 };
 
 function getFullPrice () {
@@ -39,25 +76,27 @@ function showTypeOf () {
   elementType(adaptive);
 }
 
-function getRollbackMessage () {
-  if (fullPrice >= 30000) {
+function getRollbackMessage (price) {
+  if (price >= 30000) {
     console.log("Даем скидку в 10%");
-  } else if (fullPrice >= 15000 && fullPrice < 30000) {
+  } else if (price >= 15000 && fullPrice < 30000) {
     console.log("Даем скидку в 5%");
-  } else if (fullPrice >= 0 && fullPrice < 15000) {
+  } else if (price >= 0 && fullPrice < 15000) {
     console.log("Скидка не предусмотрена");
-  } else if (fullPrice < 0) {
+  } else if (price < 0) {
     console.log("Что то пошло не так");
   }
 }
-  
-  let allServicePrices = getAllServicePrices();
+  asking();
+  allServicePrices = getAllServicePrices();
   fullPrice = getFullPrice();
   title = getTitle();
   servicePercentPrice = getServicePercentPrices();
 
   showTypeOf ();
-  getRollbackMessage();
+  getRollbackMessage(fullPrice);
+
+console.log("allServicePrices", allServicePrices);
 
 screens = screens.toLowerCase();
 
