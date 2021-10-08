@@ -26,6 +26,9 @@ const asking = function() {
     while (screenPrice === null) {
       screenPrice = prompt("Сколько будет стоить данная работа?");
     }
+    while (!isNumber(screenPrice)){
+      screenPrice = prompt("Сколько будет стоить данная работа?");
+    }
     screenPrice = +screenPrice;
     
   } while (!isNumber(screenPrice));
@@ -50,7 +53,10 @@ const getAllServicePrices = function() {
       do {
         dopNum = prompt("Сколько это будет стоить?");
         while (dopNum === null) {
-          dopNum = prompt("Сколько будет стоить данная работа?");
+          dopNum = prompt("Сколько это будет стоить?");
+        }
+        while (!isNumber(dopNum)) {
+          dopNum = prompt("Сколько это будет стоить?");
         }
         dopNum = +dopNum;
       } while (!isNumber(dopNum));
