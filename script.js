@@ -4,8 +4,7 @@ let title;
 let screens; 
 let screenPrice;
 let adaptive;
-
-let rollback = 50;
+let rollback = 20;
 let fullPrice;
 let servicePercentPrice;
 let allServicePrices;
@@ -36,22 +35,19 @@ const getAllServicePrices = function() {
 
   for (let i = 0; i < 2; i++) {
 
+    let price = 0;
+
     if (i === 0) {
       service1 = prompt("Какой дополнительный тип услуги нужен?");
     } else if (i === 1) {
       service2 = prompt("Какой дополнительный тип услуги нужен?");
     }    
-    
-    const getDopSum = function () {
-      let dopNum = 0;
-      do {
-        dopNum = prompt("Сколько это будет стоить?");        
-        
-      } while (!isNumber(dopNum));
-      return +dopNum;
-    };
 
-    sum += getDopSum();
+    do {
+      price = prompt("Сколько будет стоить данная работа?");
+    } while (!isNumber(price));     
+
+    sum += +price;
   }
 
   return sum;  
