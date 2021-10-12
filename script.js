@@ -60,6 +60,12 @@ const appData = {
         name = prompt("Какой дополнительный тип услуги нужен?");
       } while (!appData.isString(name));
 
+      // Проверка на ввод одинаково названных дополнительных услуг. Добавляется уникальный ключ Yet
+
+      if(name in appData.services === true) {
+         name = name + 'Yet';
+      }
+
       let price = 0;      
 
       do {
@@ -119,6 +125,7 @@ const appData = {
     console.log(appData.fullPrice);
     console.log(appData.servicePercentPrice);
     console.log(appData.screens);
+    console.log(appData.services);
   }
 };
 
