@@ -25,13 +25,19 @@ document.querySelector('.adv').remove();
 
 const listСhapter = document.querySelectorAll('ul');
 
-const itemCharter = listСhapter[1].querySelectorAll('li');
+const itemCharterTwo = listСhapter[1].querySelectorAll('li');
 
+const itemCharterTwoFive = listСhapter[4].querySelectorAll('li');
+console.log(itemCharterTwoFive);
 
-itemCharter[10].before(itemCharter[2]);
-itemCharter[9].before(itemCharter[7]);
-itemCharter[3].after(itemCharter[6]);
-itemCharter[4].before(itemCharter[8]);
+itemCharterTwo[10].before(itemCharterTwo[2]);
+itemCharterTwo[9].before(itemCharterTwo[7]);
+itemCharterTwo[3].after(itemCharterTwo[6]);
+itemCharterTwo[4].before(itemCharterTwo[8]);
+
+itemCharterTwoFive[1].after(itemCharterTwoFive[9]);
+itemCharterTwoFive[6].before(itemCharterTwoFive[2]);
+itemCharterTwoFive[8].before(itemCharterTwoFive[5]);
 
 // 6. в шестой книге добавить главу “Глава 8: За пределами ES6” и поставить её в правильное место
 
