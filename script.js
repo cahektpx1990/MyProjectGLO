@@ -1,134 +1,46 @@
 "use strict";
 
-const appData = {
-  title: '',
-  screens: [],
-  screenPrice: 0,
-  adaptive: true,
-  rollback: 20,
-  fullPrice: 0,
-  servicePercentPrice: 0,
-  allServicePrices: 0,
-  services: {},  
-  start: function () {
-    appData.asking();
-    appData.addPrice();    
-    appData.getFullPrice();
-    appData.getTitle();
-    appData.getServicePercentPrices();    
+// 1.Восстановить порядок книг.
 
-    appData.logger();
-  },
+const booksList = document.querySelectorAll('.books');
+const book = document.querySelectorAll('.book');
 
-  isNumber: function (num) {
-    return !isNaN(parseFloat(num)) && isFinite(num);
-  },
+booksList[0].prepend(book[1]);
+booksList[0].append(book[2]);
+book[3].before(book[4]);
 
-  isString: function (num) {
-    return isNaN(num);
-  },
+// 2.Заменить картинку заднего фона на другую из папки image
 
-  asking: function() {
-    // appData.title = prompt("Как называется ваш проект?");
+document.querySelector('body').style.backgroundImage = 'url(./image/you-dont-know-js.jpg)';
 
-    do {
-      appData.title = prompt("Как называется ваш проект?");
-    } while (!appData.isString(appData.title));
+// 3.Исправить заголовок в книге 3( Получится - "Книга 3. this и Прототипы Объектов")
+
+book[4].querySelector('a').text = 'Книга 3. this и Прототипы Объектов';
+
+// 4.Удалить рекламу со страницы
+
+document.querySelector('.adv').remove();
+
+// 5.Восстановить порядок глав во второй и пятой книге (внимательно инспектируйте индексы элементов, поможет dev tools)
+
+const listСhapter = document.querySelectorAll('ul');
+
+const itemCharter = listСhapter[1].querySelectorAll('li');
 
 
-    for (let i = 0; i < 2; i++) {
-      let name = '';
+itemCharter[10].before(itemCharter[2]);
+itemCharter[9].before(itemCharter[7]);
+itemCharter[3].after(itemCharter[6]);
+itemCharter[4].before(itemCharter[8]);
 
-      do {
-        name = prompt("Какие типы экранов нужно разработать?");
-      } while (!appData.isString(name));
+// 6. в шестой книге добавить главу “Глава 8: За пределами ES6” и поставить её в правильное место
 
-      let price = 0;
+let eightChapter = document.createElement('li');
+eightChapter.innerText = ('Глава 8: За пределами ES6');
 
-      do {
-        price = prompt("Сколько будет стоить данная работа?");
-      } while (!appData.isNumber(price));
-      price = +price;
+const itemCharterSix = listСhapter[5].querySelectorAll('li');
 
-      appData.screens.push({id: i, name: name, price: price});
-    }
+itemCharterSix[8].after(eightChapter);
 
-    for (let i = 0; i < 2; i++) {
-
-      let name = '';
-      do {
-        name = prompt("Какой дополнительный тип услуги нужен?");
-      } while (!appData.isString(name));
-
-      // Проверка на ввод одинаково названных дополнительных услуг. Добавляется уникальный ключ Yet
-
-      if(name in appData.services === true) {
-         name = name + 'Yet';
-      }
-
-      let price = 0;      
-
-      do {
-        price = prompt("Сколько будет стоить данная работа?");
-      } while (!appData.isNumber(price));
-      
-      appData.services[name] = +price;
-    }
-   
-    appData.adaptive = confirm("Нужен ли адаптив на сайте?");
-  },
-
-   // Складываем сумму работ
-
-  addPrice: function() {
-
-    // через reduce 
-    appData.screenPrice = appData.screens.reduce(function(sum, item) {
-      return sum + item.price;
-    }, 0);
-
-    // for (let screen of appData.screens) {
-    //   appData.screenPrice += +screen.price;
-    // }
-
-    for(let key in appData.services) {
-      appData.allServicePrices += appData.services[key];
-    }
-  }, 
-
-  getFullPrice: function() {
-    appData.fullPrice = appData.screenPrice + appData.allServicePrices;
-  },
-
-  getTitle: function() {
-    appData.title = appData.title.trim();
-    appData.title = appData.title[0].toUpperCase() + appData.title.slice(1);
-  },
-
-  getServicePercentPrices: function() {
-    appData.servicePercentPrice = Math.ceil(appData.fullPrice - (appData.fullPrice * (appData.rollback / 100)));
-  },
-  
-  getRollbackMessage: function(price) {
-    if (price >= 30000) {
-      return "Даем скидку в 10%";
-    } else if (price >= 15000 && price < 30000) {
-      return "Даем скидку в 5%";
-    } else if (price >= 0 && price < 15000) {
-      return "Скидка не предусмотрена";
-    } else if (price < 0) {
-      return "Что то пошло не так";
-    }
-  },
-
-  logger: function() {
-    console.log(appData.fullPrice);
-    console.log(appData.servicePercentPrice);
-    console.log(appData.screens);
-    console.log(appData.services);
-  }
-};
-
-appData.start();
 
 
