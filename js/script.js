@@ -1,5 +1,49 @@
 "use strict";
 
+const getheadCalcul = document.getElementsByTagName('h1')[0];
+console.log('getheadCalcul', getheadCalcul);
+
+const getbtnCount = document.getElementsByClassName('handler_btn')[0];
+console.log('getbtnCount', getbtnCount);
+
+const getbtnDropp = document.getElementsByClassName('handler_btn')[1];
+console.log('getbtnDropp', getbtnDropp);
+
+const getbtnPlus = document.querySelector('.screen-btn');
+console.log('getbtnPlus', getbtnPlus);
+
+const getOtherItemsFirst = document.querySelectorAll('.other-items.percent');
+console.log('getOtherItemsFirst', getOtherItemsFirst);
+
+const getOtherItemsSecond = document.querySelectorAll('.other-items.number');
+console.log('getOtherItemsSecond', getOtherItemsSecond);
+
+const getInputRange = document.querySelector('.rollback input');
+console.log('getInputRage', getInputRange);
+
+const getSpanRange = document.querySelector('.rollback  .range-value');
+console.log('getSpanRange', getSpanRange);
+
+const getInputTotalOne = document.getElementsByClassName('total-input')[0];
+console.log('getInputTotalOne', getInputTotalOne);
+
+const getInputTotalTwo = document.getElementsByClassName('total-input')[1];
+console.log('getInputTotalTwo', getInputTotalTwo);
+
+const getInputTotalThree = document.getElementsByClassName('total-input')[2];
+console.log('getInputTotalThree', getInputTotalThree);
+
+const getInputTotalFour = document.getElementsByClassName('total-input')[3];
+console.log('getInputTotalFour', getInputTotalFour);
+
+const getInputTotalFive = document.getElementsByClassName('total-input')[4];
+console.log('getInputTotalFive', getInputTotalFive);
+
+let getDivScreen = document.querySelectorAll('.screen');
+
+console.log('getDivScreen', getDivScreen);
+
+
 const appData = {
   title: '',
   screens: [],
@@ -72,8 +116,7 @@ const appData = {
       } while (!appData.isNumber(price));
       
       appData.services[name] = +price;
-    }
-   
+    }   
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
   },
 
@@ -125,5 +168,4 @@ const appData = {
 };
 
 appData.start();
-
 
