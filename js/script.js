@@ -39,7 +39,7 @@ console.log('getInputTotalFour', getInputTotalFour);
 const getInputTotalFive = document.getElementsByClassName('total-input')[4];
 console.log('getInputTotalFive', getInputTotalFive);
 
-let getDivScreen = document.querySelectorAll('.screen')[0];
+let getDivScreen = document.querySelectorAll('.screen');
 
 console.log('getDivScreen', getDivScreen);
 
