@@ -28,8 +28,7 @@ const appData = {
     return isNaN(num);
   },
 
-  asking: function() {
-    // appData.title = prompt("Как называется ваш проект?");
+  asking: function() {   
 
     do {
       appData.title = prompt("Как называется ваш проект?");
@@ -63,7 +62,7 @@ const appData = {
       // Проверка на ввод одинаково названных дополнительных услуг. Добавляется уникальный ключ Yet
 
       if(name in appData.services === true) {
-         name = name + 'Yet';
+        name = name + 'Yet';
       }
 
       let price = 0;      
@@ -85,11 +84,7 @@ const appData = {
     // через reduce 
     appData.screenPrice = appData.screens.reduce(function(sum, item) {
       return sum + item.price;
-    }, 0);
-
-    // for (let screen of appData.screens) {
-    //   appData.screenPrice += +screen.price;
-    // }
+    }, 0);    
 
     for(let key in appData.services) {
       appData.allServicePrices += appData.services[key];
